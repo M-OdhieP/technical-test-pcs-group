@@ -1,4 +1,12 @@
 function addToCart(product_id, user_id) {
+  Swal.fire({
+    position: 'top-end',
+    icon: 'success',
+    title: 'Product Added to the cart',
+    timerProgressBar: true,
+    showConfirmButton: false,
+    timer: 1500,
+  })
   fetch_all_cart_data()
   $.ajax({
     url: base_url + '/cart/get',
@@ -54,6 +62,14 @@ function fetch_all_cart_data() {
     $cartProductList.empty()
     let total_quantity = 0
 
+    if (data.length == 0) {
+      $('#checkout-btn').css('display', 'none')
+      $('#checkout-text').css('display', 'block')
+    } else {
+      $('#checkout-text').css('display', 'none')
+      $('#checkout-btn').css('display', 'block')
+    }
+
     $.each(data, function (index, item) {
       total_quantity += parseInt(item.quantity)
 
@@ -86,12 +102,20 @@ function fetch_all_cart_data() {
 
         Swal.fire({
           title: 'Are you sure?',
-          text: "You won't be able to revert this!",
+          text: 'Want to delete product from cart!',
           icon: 'warning',
           showCancelButton: true,
           confirmButtonText: 'Delete Product',
         }).then((result) => {
           if (result.value) {
+            Swal.fire({
+              position: 'top-start',
+              icon: 'success',
+              title: 'Product Deleted from the cart',
+              timerProgressBar: true,
+              showConfirmButton: false,
+              timer: 1500,
+            })
             // Code to delete item from cart goes here
             $.post(base_url + '/cart/delete', { id: cartId }, function () {
               fetch_all_cart_data()

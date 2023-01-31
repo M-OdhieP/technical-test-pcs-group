@@ -23,6 +23,8 @@ $routes->post('cart/delete', 'Cart::delete', ['filter' => 'IonAuth']);
 
 
 $routes->add("summary", "Product::summary", ['filter' => 'IonAuth']);
+$routes->add("history", "Product::history", ['filter' => 'IonAuth']);
+$routes->post("create_order", "Product::create_order", ['filter' => 'IonAuth']);
 
 
 // example crud ajax 

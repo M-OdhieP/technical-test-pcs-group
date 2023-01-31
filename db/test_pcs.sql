@@ -25,16 +25,16 @@ CREATE TABLE `carts` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `carts` */
 
 insert  into `carts`(`id`,`user_id`,`product_id`,`quantity`,`created_at`,`updated_at`,`deleted_at`) values 
-(18,7,1,11,'2023-01-30 15:26:52','2023-01-30 16:29:48',NULL),
-(19,7,2,3,'2023-01-30 15:40:27','2023-01-30 17:01:40','2023-01-30 17:01:40'),
-(20,7,3,2,'2023-01-30 15:40:28','2023-01-30 16:30:07',NULL),
-(21,0,0,2,'2023-01-30 15:48:48','2023-01-30 15:48:48',NULL),
-(22,0,0,2,'2023-01-30 15:49:02','2023-01-30 15:49:02',NULL);
+(42,7,1,1,'2023-01-31 13:58:43','2023-01-31 13:59:14','2023-01-31 13:59:14'),
+(43,7,3,1,'2023-01-31 13:59:09','2023-01-31 13:59:16','2023-01-31 13:59:16'),
+(44,7,1,2,'2023-01-31 14:02:02','2023-01-31 14:03:59','2023-01-31 14:03:59'),
+(45,7,2,1,'2023-01-31 14:04:05','2023-01-31 14:04:27','2023-01-31 14:04:27'),
+(46,7,26,1,'2023-01-31 14:04:14','2023-01-31 14:04:27','2023-01-31 14:04:27');
 
 /*Table structure for table `example_table` */
 
@@ -109,6 +109,30 @@ CREATE TABLE `migrations` (
 insert  into `migrations`(`id`,`version`,`class`,`group`,`namespace`,`time`,`batch`) values 
 (1,'20181211100537','IonAuth\\Database\\Migrations\\Migration_Install_ion_auth','','IonAuth',1646100541,1);
 
+/*Table structure for table `orders` */
+
+DROP TABLE IF EXISTS `orders`;
+
+CREATE TABLE `orders` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `description` text DEFAULT NULL,
+  `total_kupon` int(11) DEFAULT NULL,
+  `total_price` decimal(10,2) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8mb4;
+
+/*Data for the table `orders` */
+
+insert  into `orders`(`id`,`user_id`,`description`,`total_kupon`,`total_price`,`created_at`,`updated_at`,`deleted_at`) values 
+(21,7,'[\"Television - TV 4K Smart 50 inci x5\",\"Laptop - MacBook Pro 15.6 inci x1\"]',530,52499994.00,'2023-01-31 08:54:17','2023-01-31 13:14:20',NULL),
+(22,7,'[\"Smartphone - Model iPhone terbaru x4\",\"Laptop - MacBook Pro 15.6 inci x4\"]',1067,99999999.99,'2023-01-31 11:58:03','2023-01-31 09:58:03',NULL),
+(27,7,'[\"Television - TV 4K Smart 50 inci x1\"]',75,7499999.00,'2023-01-31 13:45:35','2023-01-31 13:45:35',NULL),
+(28,7,'[\"Mouse - Logitech Mouse x1\",\"Kettle - Kettle Philips HD9316\\/08 x1\"]',16,1547999.00,'2023-01-31 14:04:27','2023-01-31 14:04:27',NULL);
+
 /*Table structure for table `products` */
 
 DROP TABLE IF EXISTS `products`;
@@ -130,7 +154,7 @@ CREATE TABLE `products` (
 
 insert  into `products`(`id`,`name`,`description`,`price`,`quantity`,`image`,`created_at`,`updated_at`,`deleted_at`) values 
 (1,'Television','TV 4K Smart 50 inci',7499999.00,20,'','2023-01-30 12:40:45','2023-01-30 12:45:33',NULL),
-(2,'Laptop','MacBook Pro 15.6 inci',14999999.00,15,'','2023-01-30 12:40:45','2023-01-30 12:45:33',NULL),
+(2,'Mouse','Logitech Mouse',48000.00,15,'','2023-01-30 12:40:45','2023-01-30 12:45:33',NULL),
 (3,'Smartphone','Model iPhone terbaru',11499999.00,25,'','2023-01-30 12:40:45','2023-01-30 12:45:33',NULL),
 (4,'Tablet','iPad Pro 10 inci',8499999.00,18,'','2023-01-30 12:40:45','2023-01-30 12:45:33',NULL),
 (5,'Gaming Console','PlayStation 5',7499999.00,15,'','2023-01-30 12:40:45','2023-01-30 12:45:33',NULL),
@@ -211,7 +235,7 @@ CREATE TABLE `users` (
 /*Data for the table `users` */
 
 insert  into `users`(`id`,`ip_address`,`username`,`password`,`email`,`activation_selector`,`activation_code`,`forgotten_password_selector`,`forgotten_password_code`,`forgotten_password_time`,`remember_selector`,`remember_code`,`created_on`,`last_login`,`active`,`first_name`,`last_name`,`company`,`phone`) values 
-(7,'::1','hello@cindalogikagrafia.com','$2y$12$I7Up/t2OCUHr6YBXSbR3suMD0QlY8LodCAlxKBafpcjabt2889hCC','hello@cindalogikagrafia.com',NULL,NULL,NULL,NULL,NULL,NULL,NULL,1655112525,1675071194,1,'Cinda Logika',' Grafia','CLG','628117911121'),
+(7,'::1','hello@cindalogikagrafia.com','$2y$12$I7Up/t2OCUHr6YBXSbR3suMD0QlY8LodCAlxKBafpcjabt2889hCC','hello@cindalogikagrafia.com',NULL,NULL,NULL,NULL,NULL,NULL,NULL,1655112525,1675130458,1,'Cinda Logika',' Grafia','CLG','628117911121'),
 (12,'::1','dinasbmbk@lampungprov.go.id','$2y$12$gZHGhGp3XROmgB6NjPvpuO5/xEdoB.kPgGqcvVnmXTTN1/di0B72i','dinasbmbk@lampungprov.go.id',NULL,NULL,NULL,NULL,NULL,NULL,NULL,1666670120,1669363889,1,'BMBK','Provinsi Lampung','BMBK Provinsi Lampung','(0721) 702684'),
 (13,'::1','admin.bmbk@gmail.com','$2y$10$0q0gkLG.h9pRymKK0WaaAOofiT9NuDT84/LN4GUw4gxxDL1eP7Bzq','admin.bmbk@gmail.com',NULL,NULL,NULL,NULL,NULL,NULL,NULL,1668410688,1668411119,1,'Admin','BMBK','BMBK Provinsi Lampung','(514) 514-5385');
 

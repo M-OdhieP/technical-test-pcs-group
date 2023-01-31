@@ -20,9 +20,17 @@
 
         <ul class="navbar-nav flex-fill w-100 mb-2" id="summary-menu" style="display: none;">
             <li class="nav-item w-100 active">
-                <a class="nav-link" href="<?= base_url() ?>">
+                <a class="nav-link" href="<?= base_url('summary') ?>">
                     <i class="fe fe-file-text fe-16"></i>
                     <span class="ml-3 item-text">Summary</span>
+                </a>
+            </li>
+        </ul>
+        <ul class="navbar-nav flex-fill w-100 mb-2">
+            <li class="nav-item w-100" id="history-menu">
+                <a class="nav-link" href="<?= base_url('history') ?>">
+                    <i class="fe fe-rotate-ccw fe-16"></i>
+                    <span class="ml-3 item-text">History</span>
                 </a>
             </li>
         </ul>

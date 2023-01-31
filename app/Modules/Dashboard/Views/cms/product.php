@@ -23,7 +23,6 @@
                 <div class="col-md-12">
                     <div class="card shadow mb-2">
                         <div class="card-body">
-                            <!-- content here -->
                             <div class="container">
                                 <div class="row">
                                     <?php foreach ($products as $product) : ?>
@@ -55,10 +54,6 @@
                                     </div>
                                 <?php endif; ?>
                             </div>
-
-
-                            <!-- content here -->
-                            <!-- content here -->
                         </div>
                     </div>
                 </div>

@@ -44,7 +44,7 @@
                 <li class="nav-item" id="cart-icon-menu">
                     <a class="nav-link text-muted my-2" href="./#" data-toggle="modal" data-target=".modal-shortcut" onclick="fetch_all_cart_data()">
                         <span class="fe fe-shopping-cart fe-16"></span>
-                        <span class="badge badge-danger" id="cart-quantity">0</span>
+                        <span class="badge badge-danger" id="cart-quantity"></span>
                     </a>
                 </li>
 
@@ -84,7 +84,8 @@
                             <ul class="list-group list-group-flush" id="cart-product">
                             </ul>
                             <div>
-                                <a href="<?= base_url("summary") ?>" class="btn btn-primary col-12 my-2" type="button">Checkout</a>
+                                <a href="<?= base_url("summary") ?>" id="checkout-btn" class="btn btn-primary col-12 my-2" type="button">Checkout</a>
+                                <p class="p-2 text-center" id="checkout-text">Belum ada Product yang dipilih</p>
                             </div>
                         </div>
                     </div>
