@@ -9,7 +9,6 @@ if (!isset($routes)) {
 //     $routes->add("/", "Dashboard::index");
 // });
 $routes->add("/", "Product::index", ['filter' => 'IonAuth']);
-$routes->add("blank", "Product::blank", ['filter' => 'IonAuth']);
 
 $routes->post("cart", "Cart::add", ['filter' => 'IonAuth']);
 
@@ -26,6 +25,7 @@ $routes->add("summary", "Product::summary", ['filter' => 'IonAuth']);
 $routes->add("history", "Product::history", ['filter' => 'IonAuth']);
 $routes->post("create_order", "Product::create_order", ['filter' => 'IonAuth']);
 
+$routes->get('/dashboard', 'Product::index', ['filter' => 'IonAuth']);
 
 // example crud ajax 
 $routes->add("example_index_crud", "ExampleController::index", ['filter' => 'IonAuth']);
@@ -39,7 +39,7 @@ $routes->delete("example_delete/(:any)", "ExampleController::delete/$1", ['filte
 
 
 $routes->group("dashboard", ["namespace" => "App\Modules\Dashboard\Controllers", 'filter' => 'IonAuth'], function ($routes) {
-    $routes->add("/", "Dashboard::index");
+
     $routes->add("setting", "Setting::index");
     $routes->post("setting/update", "Setting::update");
 });

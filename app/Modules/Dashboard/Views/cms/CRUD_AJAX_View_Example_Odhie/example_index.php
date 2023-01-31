@@ -41,9 +41,10 @@
                                     <thead>
                                         <tr>
                                             <th>No</th>
-                                            <th>Name</th>
-                                            <th>Email</th>
-                                            <th>Message</th>
+                                            <th>Product Name</th>
+                                            <th>Description</th>
+                                            <th>Price</th>
+                                            <th>Quantity</th>
                                             <th>Image</th>
                                             <th class="text-center">Actions</th>
                                         </tr>
@@ -67,19 +68,24 @@
 
                                                 <div class="form-row">
                                                     <div class="form-group col-md-6">
-                                                        <label for="name">Name</label>
+                                                        <label for="name">Product Name</label>
                                                         <input type="text" id="name" name="name" class="form-control" />
                                                     </div>
                                                     <div class="form-group col-md-6">
-                                                        <label for="email">Email</label>
-                                                        <input type="email" id="email" name="email" class="form-control" />
+                                                        <label for="description">Description</label>
+                                                        <input type="description" id="description" name="description" class="form-control" />
+                                                    </div>
+                                                    <div class="form-group col-md-6">
+                                                        <label for="price">Price</label>
+                                                        <input type="text" id="price" name="price" class="form-control" />
+                                                    </div>
+                                                    <div class="form-group col-md-6">
+                                                        <label for="quantity">Quantity</label>
+                                                        <input type="quantity" id="quantity" name="quantity" class="form-control" />
                                                     </div>
                                                 </div>
 
-                                                <div class="form-group mb-3">
-                                                    <label for="message">Message</label>
-                                                    <textarea class="form-control" id="message" name="message" rows="3"></textarea>
-                                                </div>
+
                                                 <div class="form-group mb-3">
                                                     <label for="image">Image</label>
                                                     <img id="image-thumbnail" src="#" alt="Image thumbnail" class="image-thumbnail-new-content">
@@ -112,18 +118,23 @@
 
                                                 <div class="form-row">
                                                     <div class="form-group col-md-6">
-                                                        <label for="name">Name</label>
+                                                        <label for="name">Product Name</label>
                                                         <input type="text" id="name_edit" name="name" class="form-control" />
                                                     </div>
                                                     <div class="form-group col-md-6">
-                                                        <label for="email">Email</label>
-                                                        <input type="email" id="email_edit" name="email" class="form-control" />
+                                                        <label for="description">Description</label>
+                                                        <input type="text" id="description_edit" name="description" class="form-control" />
+                                                    </div>
+                                                    <div class="form-group col-md-6">
+                                                        <label for="price">Price</label>
+                                                        <input type="text" id="price_edit" name="price" class="form-control" />
+                                                    </div>
+                                                    <div class="form-group col-md-6">
+                                                        <label for="quantity">Quantity</label>
+                                                        <input type="text" id="qty_edit" name="quantity" class="form-control" />
                                                     </div>
                                                 </div>
-                                                <div class="form-group mb-3">
-                                                    <label for="message">Message</label>
-                                                    <textarea class="form-control" id="message_edit" name="message" rows="3"></textarea>
-                                                </div>
+
                                                 <div class="form-group mb-3">
                                                     <label for="image">Image</label>
                                                     <img id="image-thumbnail_edit" src="#" alt="Image thumbnail" class="image-thumbnail-new-content">
@@ -284,18 +295,22 @@
                 $('#edit-form').trigger('reset');
                 $.get("<?= base_url('example_get_one') ?>/" + id,
                     function(response) {
+
                         var data = response.item
+
+                        console.log(data.quantity);
                         $('#EditContent').modal('show');
                         $("#id_edit").val(data.id)
                         $("#name_edit").val(data.name)
-                        $("#email_edit").val(data.email)
-                        $("#message_edit").html(data.message)
+                        $("#description_edit").val(data.description)
+                        $("#price_edit").val(data.price)
+                        $("#qty_edit").val(data.quantity)
                         $('#file-label-edit').text("Choose File to Change the image");
 
                         if (data.image) {
                             $("#image-thumbnail_edit")
                                 .css('display', 'block')
-                                .attr('src', '<?= base_url('uploaded_file/example_upload') ?>/' + data.image)
+                                .attr('src', '<?= base_url('uploaded_file/product') ?>/' + data.image)
                         }
                     });
             };

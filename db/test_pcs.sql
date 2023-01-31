@@ -25,7 +25,7 @@ CREATE TABLE `carts` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `carts` */
 
@@ -34,28 +34,9 @@ insert  into `carts`(`id`,`user_id`,`product_id`,`quantity`,`created_at`,`update
 (43,7,3,1,'2023-01-31 13:59:09','2023-01-31 13:59:16','2023-01-31 13:59:16'),
 (44,7,1,2,'2023-01-31 14:02:02','2023-01-31 14:03:59','2023-01-31 14:03:59'),
 (45,7,2,1,'2023-01-31 14:04:05','2023-01-31 14:04:27','2023-01-31 14:04:27'),
-(46,7,26,1,'2023-01-31 14:04:14','2023-01-31 14:04:27','2023-01-31 14:04:27');
-
-/*Table structure for table `example_table` */
-
-DROP TABLE IF EXISTS `example_table`;
-
-CREATE TABLE `example_table` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(100) DEFAULT NULL,
-  `email` varchar(50) DEFAULT NULL,
-  `message` text DEFAULT NULL,
-  `image` varchar(100) DEFAULT NULL,
-  `created_at` datetime DEFAULT NULL,
-  `updated_at` datetime DEFAULT NULL,
-  `deleted_at` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=66 DEFAULT CHARSET=utf8mb4;
-
-/*Data for the table `example_table` */
-
-insert  into `example_table`(`id`,`name`,`email`,`message`,`image`,`created_at`,`updated_at`,`deleted_at`) values 
-(65,'Muhamad Odhie Prasetio','tiotio179@gmail.com','test messagetest messagetest messagetest messagetest messagetest messagetest messagemessagetest messagetest messagemessagetest messagetest messagemessagetest messagetest messagemessagetest messagetest message','1672128625_df942b237214e5fec7e0.png','2022-12-19 11:37:51','2023-01-28 13:20:46',NULL);
+(46,7,26,1,'2023-01-31 14:04:14','2023-01-31 14:04:27','2023-01-31 14:04:27'),
+(47,16,1,2,'2023-01-31 14:44:19','2023-01-31 14:45:06','2023-01-31 14:45:06'),
+(48,16,2,2,'2023-01-31 14:44:20','2023-01-31 14:45:06','2023-01-31 14:45:06');
 
 /*Table structure for table `groups` */
 
@@ -85,9 +66,12 @@ CREATE TABLE `login_attempts` (
   `login` varchar(100) DEFAULT NULL,
   `time` int(11) unsigned DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8;
 
 /*Data for the table `login_attempts` */
+
+insert  into `login_attempts`(`id`,`ip_address`,`login`,`time`) values 
+(34,'::1','hello@cindalogikagrafia.com',1675151136);
 
 /*Table structure for table `migrations` */
 
@@ -123,7 +107,7 @@ CREATE TABLE `orders` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `orders` */
 
@@ -131,7 +115,8 @@ insert  into `orders`(`id`,`user_id`,`description`,`total_kupon`,`total_price`,`
 (21,7,'[\"Television - TV 4K Smart 50 inci x5\",\"Laptop - MacBook Pro 15.6 inci x1\"]',530,52499994.00,'2023-01-31 08:54:17','2023-01-31 13:14:20',NULL),
 (22,7,'[\"Smartphone - Model iPhone terbaru x4\",\"Laptop - MacBook Pro 15.6 inci x4\"]',1067,99999999.99,'2023-01-31 11:58:03','2023-01-31 09:58:03',NULL),
 (27,7,'[\"Television - TV 4K Smart 50 inci x1\"]',75,7499999.00,'2023-01-31 13:45:35','2023-01-31 13:45:35',NULL),
-(28,7,'[\"Mouse - Logitech Mouse x1\",\"Kettle - Kettle Philips HD9316\\/08 x1\"]',16,1547999.00,'2023-01-31 14:04:27','2023-01-31 14:04:27',NULL);
+(28,7,'[\"Mouse - Logitech Mouse x1\",\"Kettle - Kettle Philips HD9316\\/08 x1\"]',16,1547999.00,'2023-01-31 14:04:27','2023-01-31 14:04:27',NULL),
+(29,16,'[\"Television - TV 4K Smart 50 inci x2\",\"Mouse - Logitech Mouse x2\"]',152,15095998.00,'2023-01-31 14:45:06','2023-01-31 14:45:06',NULL);
 
 /*Table structure for table `products` */
 
@@ -153,12 +138,12 @@ CREATE TABLE `products` (
 /*Data for the table `products` */
 
 insert  into `products`(`id`,`name`,`description`,`price`,`quantity`,`image`,`created_at`,`updated_at`,`deleted_at`) values 
-(1,'Television','TV 4K Smart 50 inci',7499999.00,20,'','2023-01-30 12:40:45','2023-01-30 12:45:33',NULL),
-(2,'Mouse','Logitech Mouse',48000.00,15,'','2023-01-30 12:40:45','2023-01-30 12:45:33',NULL),
-(3,'Smartphone','Model iPhone terbaru',11499999.00,25,'','2023-01-30 12:40:45','2023-01-30 12:45:33',NULL),
-(4,'Tablet','iPad Pro 10 inci',8499999.00,18,'','2023-01-30 12:40:45','2023-01-30 12:45:33',NULL),
-(5,'Gaming Console','PlayStation 5',7499999.00,15,'','2023-01-30 12:40:45','2023-01-30 12:45:33',NULL),
-(6,'Kamera','Kamera DSLR Canon EOS',14499999.00,12,'','2023-01-30 12:40:45','2023-01-30 12:45:33',NULL),
+(1,'Television','TV 4K Smart 50 inci',7499999.00,20,'1.jpg','2023-01-30 12:40:45','2023-01-30 12:45:33',NULL),
+(2,'Mouse','Logitech Mouse',48000.00,15,'2.jpg','2023-01-30 12:40:45','2023-01-30 12:45:33',NULL),
+(3,'Smartphone','Model iPhone terbaru',11499999.00,25,'3.jpg','2023-01-30 12:40:45','2023-01-30 12:45:33',NULL),
+(4,'Tablet','iPad Pro 10 inci',8499999.00,18,'4.jpg','2023-01-30 12:40:45','2023-01-30 12:45:33',NULL),
+(5,'Gaming Console','PlayStation 5',7499999.00,15,'5.jpg','2023-01-30 12:40:45','2023-01-30 12:45:33',NULL),
+(6,'Kamera','Kamera DSLR Canon EOS',14499999.00,12,'6.jpg','2023-01-30 12:40:45','2023-01-30 12:45:33',NULL),
 (7,'Speaker Bluetooth','Speaker JBL Flip 5',1999999.00,30,'','2023-01-30 12:40:45','2023-01-30 12:45:33',NULL),
 (8,'Headphone','Headphone Beats Solo Pro',4499999.00,20,'','2023-01-30 12:40:45','2023-01-30 12:45:33',NULL),
 (9,'Home Theater','Home Theater LG SK9',5499999.00,10,'','2023-01-30 12:40:45','2023-01-30 12:45:33',NULL),
@@ -230,14 +215,14 @@ CREATE TABLE `users` (
   UNIQUE KEY `activation_selector` (`activation_selector`),
   UNIQUE KEY `forgotten_password_selector` (`forgotten_password_selector`),
   UNIQUE KEY `remember_selector` (`remember_selector`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 
 /*Data for the table `users` */
 
 insert  into `users`(`id`,`ip_address`,`username`,`password`,`email`,`activation_selector`,`activation_code`,`forgotten_password_selector`,`forgotten_password_code`,`forgotten_password_time`,`remember_selector`,`remember_code`,`created_on`,`last_login`,`active`,`first_name`,`last_name`,`company`,`phone`) values 
-(7,'::1','hello@cindalogikagrafia.com','$2y$12$I7Up/t2OCUHr6YBXSbR3suMD0QlY8LodCAlxKBafpcjabt2889hCC','hello@cindalogikagrafia.com',NULL,NULL,NULL,NULL,NULL,NULL,NULL,1655112525,1675130458,1,'Cinda Logika',' Grafia','CLG','628117911121'),
-(12,'::1','dinasbmbk@lampungprov.go.id','$2y$12$gZHGhGp3XROmgB6NjPvpuO5/xEdoB.kPgGqcvVnmXTTN1/di0B72i','dinasbmbk@lampungprov.go.id',NULL,NULL,NULL,NULL,NULL,NULL,NULL,1666670120,1669363889,1,'BMBK','Provinsi Lampung','BMBK Provinsi Lampung','(0721) 702684'),
-(13,'::1','admin.bmbk@gmail.com','$2y$10$0q0gkLG.h9pRymKK0WaaAOofiT9NuDT84/LN4GUw4gxxDL1eP7Bzq','admin.bmbk@gmail.com',NULL,NULL,NULL,NULL,NULL,NULL,NULL,1668410688,1668411119,1,'Admin','BMBK','BMBK Provinsi Lampung','(514) 514-5385');
+(7,'::1','tiotio179@gmail.com','$2y$12$.g.IYddnP9dCU4rkTSyTLe23IP3D3xJmf/hYcznl509OlCgDxuH8G','tiotio179@gmail.com',NULL,NULL,NULL,NULL,NULL,NULL,NULL,1655112525,1675151143,1,'Muhamad Odhie','Prasetio','CLG','089520003191'),
+(15,'::1','member1@test.com','$2y$10$PMhWo7cQGG3r9.91X.CPKOsDrDV5.iPWg4kOUeqIVnMkon.A7Sm0u','member1@test.com',NULL,NULL,NULL,NULL,NULL,NULL,NULL,1675150517,1675151119,1,'Member','1','PCS Group',''),
+(16,'::1','member2@test.com','$2y$10$ZLIclABJ41.9GlnhuxUshOPCjKJDv2IE4HU0BcYbEVxAtIaQ0bvzu','member2@test.com',NULL,NULL,NULL,NULL,NULL,NULL,NULL,1675150580,1675150679,1,'member','2','PCS Group','');
 
 /*Table structure for table `users_groups` */
 
@@ -252,15 +237,15 @@ CREATE TABLE `users_groups` (
   KEY `users_groups_group_id_foreign` (`group_id`),
   CONSTRAINT `users_groups_group_id_foreign` FOREIGN KEY (`group_id`) REFERENCES `groups` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION,
   CONSTRAINT `users_groups_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=109 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=113 DEFAULT CHARSET=utf8;
 
 /*Data for the table `users_groups` */
 
 insert  into `users_groups`(`id`,`user_id`,`group_id`) values 
-(71,7,1),
-(72,7,5),
-(82,12,1),
-(108,13,2);
+(109,15,2),
+(110,16,2),
+(111,7,1),
+(112,7,5);
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

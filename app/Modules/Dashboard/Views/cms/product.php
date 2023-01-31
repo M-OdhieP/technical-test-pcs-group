@@ -31,7 +31,7 @@
                                                 <?php if ($product->image == '') : ?>
                                                     <img src=" https://pmb.pnc.ac.id/wp-content/themes/edubin/assets/images/course-ph.png" class="card-img-top" alt="<?= $product->name ?>">
                                                 <?php else : ?>
-                                                    <img src="<?= $product->image ?>" class="card-img-top" alt="<?= $product->name ?>">
+                                                    <img src="<?= base_url('uploaded_file/product') . '/' . $product->image ?>" class="card-img-top product-img" alt="<?= $product->name ?>">
                                                 <?php endif; ?>
                                                 <div class="card-body">
                                                     <h4 class="card-title m-0"><?= $product->name ?></h4>
@@ -69,4 +69,14 @@
     $("#main_title").append(' | <?= $title ?>')
     $("#product-menu").addClass('active')
 </script>
+<?= $this->endSection(); ?>
+
+<?= $this->section('css'); ?>
+<style>
+    .product-img {
+        height: 200px;
+        border: solid 2px black;
+        object-fit: cover;
+    }
+</style>
 <?= $this->endSection(); ?>

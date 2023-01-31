@@ -37,32 +37,27 @@
 
         <ul class="navbar-nav flex-fill w-100 mb-2">
 
-            <li class="nav-item w-100">
-                <a class="nav-link" href="<?= base_url("blank") ?>">
-                    <i class="fe fe-file fe-16"></i>
-                    <span class="ml-3 item-text">blank page</span>
-                </a>
-            </li>
-
-
             <li class="nav-item dropdown">
                 <a href="#charts" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
                     <i class="fe fe-user fe-16"></i>
                     <span class="ml-3 item-text">User Setting</span>
                 </a>
                 <ul class="collapse list-unstyled pl-4 w-100" id="charts">
-                    <li class="nav-item">
-                        <a class="nav-link pl-3" href="<?= base_url("auth") ?>"><span class="ml-1 item-text">User List</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link pl-3" href="<?= base_url("auth/create_user") ?>"><span class="ml-1 item-text">Create User</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link pl-3" href="<?= base_url("auth/groups") ?>"><span class="ml-1 item-text">Groups</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link pl-3" href="<?= base_url("auth/create_group") ?>"><span class="ml-1 item-text">Create Group</span></a>
-                    </li>
+
+                    <?php if (superadmin()) : ?>
+                        <li class="nav-item">
+                            <a class="nav-link pl-3" href="<?= base_url("auth") ?>"><span class="ml-1 item-text">User List</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link pl-3" href="<?= base_url("auth/create_user") ?>"><span class="ml-1 item-text">Create User</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link pl-3" href="<?= base_url("auth/groups") ?>"><span class="ml-1 item-text">Groups</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link pl-3" href="<?= base_url("auth/create_group") ?>"><span class="ml-1 item-text">Create Group</span></a>
+                        </li>
+                    <?php endif; ?>
                     <li class="nav-item">
                         <a class="nav-link pl-3" href="<?= base_url("auth/change_password") ?>"><span class="ml-1 item-text">Change Password</span></a>
                     </li>
@@ -72,13 +67,15 @@
                 </ul>
             </li>
 
+            <?php if (superadmin()) : ?>
+                <li class="nav-item w-100">
+                    <a class="nav-link" href="<?= base_url("dashboard/setting") ?>">
+                        <i class="fe fe-settings fe-16"></i>
+                        <span class="ml-3 item-text">Setting</span>
+                    </a>
+                </li>
+            <?php endif; ?>
 
-            <li class="nav-item w-100">
-                <a class="nav-link" href="<?= base_url("dashboard/setting") ?>">
-                    <i class="fe fe-settings fe-16"></i>
-                    <span class="ml-3 item-text">Setting</span>
-                </a>
-            </li>
 
         </ul>
 

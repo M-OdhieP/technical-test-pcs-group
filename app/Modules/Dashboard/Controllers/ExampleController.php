@@ -11,18 +11,19 @@ class ExampleController extends BaseController
 
     public function index()
     {
-        $model = new Models\ExampleModel();
+        $model = new Models\Product();
         $data['title'] =  'Example CRUD AJAX';
         $data['items'] = $model->findAll();
-        return view(dashboard_view("cms/CRUD_AJAX_View_Example/example_index"), $data);
+        return view(dashboard_view("cms/CRUD_AJAX_View_Example_Odhie/example_index"), $data);
     }
 
     public function create()
     {
         $data = [
             'name' => $this->request->getVar('name'),
-            'email' => $this->request->getVar('email'),
-            'message' => $this->request->getVar('message'),
+            'description' => $this->request->getVar('description'),
+            'price' => $this->request->getVar('price'),
+            'quantity' => $this->request->getVar('quantity'),
             'image' => '',
         ];
 
@@ -32,7 +33,7 @@ class ExampleController extends BaseController
             $data['image'] = $this->uploadImage();
         }
 
-        $model = new Models\ExampleModel();
+        $model = new Models\Product();
         $model->insert($data);
 
         return json_encode([
@@ -46,10 +47,11 @@ class ExampleController extends BaseController
         $id = $this->request->getVar('id');
         $data = [
             'name' => $this->request->getVar('name'),
-            'email' => $this->request->getVar('email'),
-            'message' => $this->request->getVar('message'),
+            'description' => $this->request->getVar('description'),
+            'price' => $this->request->getVar('price'),
+            'quantity' => $this->request->getVar('quantity'),
         ];
-        $model = new Models\ExampleModel();
+        $model = new Models\Product();
 
 
         // Check if image is present
@@ -58,7 +60,7 @@ class ExampleController extends BaseController
             $data['image'] = $this->uploadImage();
 
             $data_image = $model->find($id);
-            $image = "uploaded_file/example_upload/" . $data_image->image;
+            $image = "uploaded_file/product/" . $data_image->image;
             if (is_file($image)) {
                 unlink($image);
             }
@@ -75,10 +77,10 @@ class ExampleController extends BaseController
     public function delete(int $id)
     {
         // Delete the item with the specified ID
-        $model = new Models\ExampleModel();
+        $model = new Models\Product();
         $data = $model->find($id);
 
-        $image = "uploaded_file/example_upload/" . $data->image;
+        $image = "uploaded_file/product/" . $data->image;
 
         if (is_file($image)) {
             unlink($image);
@@ -93,7 +95,7 @@ class ExampleController extends BaseController
 
     public function fetch_all_data()
     {
-        $model = new Models\ExampleModel();
+        $model = new Models\Product();
         $data  = $model->findAll();
         return $this->response->setJSON([
             'item' => $data
@@ -104,8 +106,8 @@ class ExampleController extends BaseController
     {
         helper('text');
         $data['data'] = array();
-        $model = new Models\ExampleModel();
-        $result =  $model->select('id, name, email, message, image')->findAll();
+        $model = new Models\Product();
+        $result =  $model->select('id, name, description, price, quantity, image')->findAll();
 
         foreach ($result as $key => $value) {
 
@@ -117,13 +119,14 @@ class ExampleController extends BaseController
             if (!$value->image) {
                 $value->image = 'blank.png';
             }
-            $image = '<img src=' . base_url('uploaded_file/example_upload') . '/' . $value->image  . ' class="image-thumbnail">';
+            $image = '<img src=' . base_url('uploaded_file/product') . '/' . $value->image  . ' class="image-thumbnail">';
 
             $data['data'][$key] = array(
                 $key + 1,
                 $value->name,
-                $value->email,
-                word_limiter($value->message, 6),
+                $value->description,
+                $value->price,
+                $value->quantity,
                 $image,
                 $ops
             );
@@ -135,7 +138,7 @@ class ExampleController extends BaseController
 
     public function get_one($id)
     {
-        $model = new Models\ExampleModel();
+        $model = new Models\Product();
         $data  = $model->find($id);
         return $this->response->setJSON([
             'item' => $data
@@ -147,7 +150,7 @@ class ExampleController extends BaseController
         $file = $this->request->getFile('image');
         if ($file->isValid() && !$file->hasMoved()) {
             $newName = $file->getRandomName();
-            $file->move('uploaded_file/example_upload', $newName);
+            $file->move('uploaded_file/product', $newName);
 
             return $newName;
         }
