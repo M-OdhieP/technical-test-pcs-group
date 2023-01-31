@@ -25,11 +25,37 @@ class Product extends BaseController
         return view(dashboard_view("cms/product"), $data);
     }
 
-    public function blank()
+    public function summary()
     {
-        $data['title'] =  'Blank Page';
+        $data['title'] =  'Summary';
+        $model = new Models\Cart();
+        $data['summary'] = $model
+            ->select('carts.*')
+            ->select('products.name as product_name, products.price as product_price, products.description as product_description')
+            ->join('products', 'products.id=carts.product_id')
+            ->where(['user_id' => getUserId()])
+            ->findAll();
 
-        return view(dashboard_view("cms/blank_card_template/index"), $data);
+        $data['total_price'] = 0;
+        $data['kupon_from_product_total'] = 0;
+
+        foreach ($data['summary'] as $item) {
+            if ($item->product_price > 50000) {
+                $item->kupon = 1 * $item->quantity;
+            }
+
+            $item->total_each_product_price = $item->product_price * $item->quantity;
+            $data['total_price'] += $item->total_each_product_price;
+            $data['kupon_from_product_total'] += $item->kupon;
+        }
+        $data['kupon_from_total_price'] = floor($data['total_price'] / 100000);
+
+
+        // echo '<pre>';
+        // var_dump($data['summary']);
+        // die;
+
+        return view(dashboard_view("cms/summary"), $data);
     }
     public function crud_ajax_new()
     {

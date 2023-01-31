@@ -22,6 +22,9 @@ $routes->get('/cartget_all', 'Cart::get_all', ['filter' => 'IonAuth']);
 $routes->post('cart/delete', 'Cart::delete', ['filter' => 'IonAuth']);
 
 
+$routes->add("summary", "Product::summary", ['filter' => 'IonAuth']);
+
+
 // example crud ajax 
 $routes->add("example_index_crud", "ExampleController::index", ['filter' => 'IonAuth']);
 $routes->add("example_get_all_data", "ExampleController::get_all_data", ['filter' => 'IonAuth']);

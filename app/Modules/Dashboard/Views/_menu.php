@@ -10,16 +10,22 @@
         </div>
 
         <ul class="navbar-nav flex-fill w-100 mb-2">
-            <li class="nav-item w-100">
+            <li class="nav-item w-100" id="product-menu">
                 <a class="nav-link" href="<?= base_url() ?>">
-                    <i class="fe fe-home fe-16"></i>
+                    <i class="fe fe-shopping-bag fe-16"></i>
                     <span class="ml-3 item-text">Product</span>
                 </a>
             </li>
         </ul>
-        <!-- <p class="text-muted nav-heading mt-4 mb-1">
-            <span>Components</span>
-        </p> -->
+
+        <ul class="navbar-nav flex-fill w-100 mb-2" id="summary-menu" style="display: none;">
+            <li class="nav-item w-100 active">
+                <a class="nav-link" href="<?= base_url() ?>">
+                    <i class="fe fe-file-text fe-16"></i>
+                    <span class="ml-3 item-text">Summary</span>
+                </a>
+            </li>
+        </ul>
 
         <ul class="navbar-nav flex-fill w-100 mb-2">
 
@@ -30,23 +36,6 @@
                 </a>
             </li>
 
-            <li class="nav-item dropdown">
-                <a href="#forms" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
-                    <i class="fe fe-credit-card fe-16"></i>
-                    <span class="ml-3 item-text">Laporan</span>
-                </a>
-                <ul class="collapse list-unstyled pl-4 w-100" id="forms">
-                    <li class="nav-item">
-                        <a class="nav-link pl-3" href="#"><span class="ml-1 item-text">Wizard</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link pl-3" href="#"><span class="ml-1 item-text">Layouts</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link pl-3" href="#"><span class="ml-1 item-text">File upload</span></a>
-                    </li>
-                </ul>
-            </li>
 
             <li class="nav-item dropdown">
                 <a href="#charts" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">

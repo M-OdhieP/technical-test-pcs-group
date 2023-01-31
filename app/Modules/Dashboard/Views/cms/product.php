@@ -72,5 +72,6 @@
 <?= $this->section('js'); ?>
 <script>
     $("#main_title").append(' | <?= $title ?>')
+    $("#product-menu").addClass('active')
 </script>
 <?= $this->endSection(); ?>

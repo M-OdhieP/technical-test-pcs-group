@@ -41,7 +41,7 @@
                         <i class="fe fe-sun fe-16"></i>
                     </a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" id="cart-icon-menu">
                     <a class="nav-link text-muted my-2" href="./#" data-toggle="modal" data-target=".modal-shortcut" onclick="fetch_all_cart_data()">
                         <span class="fe fe-shopping-cart fe-16"></span>
                         <span class="badge badge-danger" id="cart-quantity">0</span>
@@ -83,6 +83,9 @@
                         <div class="modal-body px-2">
                             <ul class="list-group list-group-flush" id="cart-product">
                             </ul>
+                            <div>
+                                <a href="<?= base_url("summary") ?>" class="btn btn-primary col-12 my-2" type="button">Checkout</a>
+                            </div>
                         </div>
                     </div>
                 </div>

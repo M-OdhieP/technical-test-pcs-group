@@ -36,6 +36,7 @@
             <div class="d-flex flex-column  align-items-center">
               <img class="img-fluid login-logo" src="<?= base_url("uploaded_file/settings/logo.png") ?>" alt="" srcset="">
               <h3> Login Page</h3>
+              <h5>Test Web & Backend Programmer</h5>
             </div>
           </div>
           <div class="card-body">
