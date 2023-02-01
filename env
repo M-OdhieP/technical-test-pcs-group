@@ -40,7 +40,7 @@ CI_ENVIRONMENT = development
 #--------------------------------------------------------------------
 
 database.default.hostname = localhost
-database.default.database = odhie_template
+database.default.database = test_pcs_group
 database.default.username = root
 database.default.password = 
 database.default.DBDriver = MySQLi
